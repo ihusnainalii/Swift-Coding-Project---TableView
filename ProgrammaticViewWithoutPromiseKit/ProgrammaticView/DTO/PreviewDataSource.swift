@@ -10,7 +10,7 @@ import Foundation
 class PreviewDataSource {
     
     // Data Source
-    private var names = (1...50).map { Preview("\($0 ?? 0)", $0) }
+    private var names = (1...999).map { Preview("\($0 ?? 0)", $0) }
     
     // Counter
     var numberOfData: Int {
