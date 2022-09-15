@@ -23,6 +23,26 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
+    let numberLbl: UILabel = {
+        let label = UILabel()
+        if let font = UIFont(name: Utilities.Avenir.Medium, size: 25) {
+            label.font = font
+        }
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.text = "10"
+        return label
+    }()
+    
+    let image: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "stars")
+        img.contentMode = .scaleAspectFill
+        return img
+    }()
+    
     let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.style = .medium
@@ -43,16 +63,29 @@ class TableViewCell: UITableViewCell {
     // MARK: - Custom Functions
     fileprivate func setupConstraints() {
         addSubview(cellLabel)
-        addSubview(activityIndicator)
+//        addSubview(activityIndicator)
+        
+        
+//        image.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+//        image.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+//        image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+//        image.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        
+        image.frame = CGRect(x: 0, y: 5, width: 150, height: 40)
+        addSubview(image)
+        numberLbl.frame = image.frame
+        addSubview(numberLbl)
+        
         cellLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
         cellLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        cellLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        cellLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 20).isActive = true
         cellLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
-        
-        activityIndicator.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        activityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5).isActive = true
-        activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
-        activityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5).isActive = true
+
+//        activityIndicator.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+//        activityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5).isActive = true
+//        activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
+//        activityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 5).isActive = true
         
         activityIndicator.superview?.bringSubviewToFront(activityIndicator)
     }

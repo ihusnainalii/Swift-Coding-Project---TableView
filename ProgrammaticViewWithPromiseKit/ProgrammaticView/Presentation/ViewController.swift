@@ -64,6 +64,9 @@ extension ViewController: UITableViewDataSource {
             fatalError("Sorry, could not load cell")
         }
         cell.updateAppearanceFor("")
+        cell.layer.cornerRadius = 5
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
         return cell
     }
     
